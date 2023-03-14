@@ -1,44 +1,30 @@
-export const nodeList = [
-  {
-    id: 1,
-    parent: null,
-    children: [
-      {
-        id: 3,
-        parent: 1,
-        children: [],
-        isVisible: false,
-        isSelected: false,
-        text: "node text"
-      },
-      {
-        id: 4,
-        parent: 1,
+export const nodeList =
+    {
+        id: 1,
+        text: "node text",
         children: [
-          {
-            id: 5,
-            parent: 4,
-            children: [],
-            isVisible: false,
-            isSelected: false,
-            text: "node text"
-          }
+            {
+                id: 3,
+                children: [
+                    {
+                    id: 6,
+                    text: "node text",
+                    children: []
+                }
+                ],
+                text: "node text"
+            },
+            {
+                id: 4,
+                text: "node text",
+                children: [
+                    {
+                        id: 5,
+                        children: [],
+                        text: "node text"
+                    }
+                ],
+            }
         ],
-        isVisible: true,
-        isSelected: false,
-        text: "node text"
-      }
-    ],
-    isVisible: true,
-    isSelected: false,
-    text: "node text"
-  },
-  {
-    id: 2,
-    parent: null,
-    children: [],
-    isVisible: true,
-    isSelected: false,
-    text: "node text"
-  }
-];
+    }
+

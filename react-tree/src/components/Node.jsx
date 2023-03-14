@@ -1,30 +1,35 @@
-import { useState } from "react";
+import {useState} from "react";
 
-export const Node = ({ nodes, level = 0 }) => {
-  const [isVisible, setIsVisible] = useState(true);
+const Node = ({nodes}) => {
+    const [isVisible, setIsVisible] = useState(false);
 
-  const handleVisibility = (node) => {
-    node.isVisible = !node.isVisible;
-  };
-  return (
-    <div>
-      {Array.isArray(nodes) &&
-        nodes.map((node, index) => {
-          return (
-            <div
-              key={node.id.toString() + index}
-              style={{ marginLeft: level + 40 }}
-            >
-              <span onClick={() => handleVisibility(node)}>
-                {isVisible ? "-" : "+"}{" "}
-              </span>
-              Node
-              <Node nodes={node.children} level={level + 1} />
-            </div>
-          );
-        })}
-    </div>
-  );
-};
+    const toggleOpen = () => {
+        setIsVisible(!isVisible);
+    };
+
+    const toggleSelect = () => {
+
+    }
+
+    return (
+        <div style={{paddingLeft: 30}}>
+
+
+            <span onClick={toggleOpen}>{isVisible ? "- " : "+ "}</span>
+            <span onClick={toggleSelect}>Node {nodes.id}</span>
+            {isVisible ? (
+                nodes?.children?.map((child) => {
+                    return (
+                        <div >
+                            <Node  nodes={child}/>
+                        </div>
+                    );
+                })
+            ) : (
+                <></>
+            )}
+        </div>
+    );
+}
 
 export default Node;

@@ -14,19 +14,14 @@ const Node = ({nodes}) => {
     return (
         <div style={{paddingLeft: 30}}>
 
-
             <span onClick={toggleOpen}>{isVisible ? "- " : "+ "}</span>
-            <span onClick={toggleSelect}>Node {nodes.id}</span>
-            {isVisible ? (
-                nodes?.children?.map((child) => {
+            <span onClick={toggleSelect}>Node {nodes?.id}</span>
+            {isVisible && (
+                nodes?.children?.map((childNode) => {
                     return (
-                        <div >
-                            <Node  nodes={child}/>
-                        </div>
+                        <Node key={childNode.id} nodes={childNode}/>
                     );
                 })
-            ) : (
-                <></>
             )}
         </div>
     );

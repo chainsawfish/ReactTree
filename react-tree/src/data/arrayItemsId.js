@@ -1,1 +1,2 @@
-export const arrayItemId = [1,2,3,4,5,6]
+ const arrayItemId = [1,2,3,4,5,6]
+export default arrayItemId;

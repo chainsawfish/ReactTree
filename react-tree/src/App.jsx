@@ -1,20 +1,22 @@
 import "react";
-import { createContext } from "react";
+import {createContext, useState} from "react";
 import Node from "./components/Node";
 import { nodeList } from "./data/nodeList.js";
 import NavBar from "./components/NavBar.jsx";
 import "./App.css";
+import {getParentById} from "./utils/getParentById.js";
+import {getNewItemId} from "./utils/getNewItemId.js";
 
 export const TreeContext = createContext(null);
 
 const handlers = {
   handleAdd: (nodeId) => {
     const newNode = {
-      id: "TODO id gen func",
+      id: getNewItemId(),
       text: "simple text",
       children: [],
-    }; // TODO: func that find node by id
-    targetNode.children.push(newNode);
+    };
+    getParentById(nodeId)?.children?.push(newNode)
   },
 
   handleRemove: () => {},
@@ -23,8 +25,9 @@ const handlers = {
 };
 
 function App() {
+  const [selectedId, setSelectedId] = useState(0)
   const contextValue = {
-    selectedId: 0,
+    selectedId, setSelectedId,
     ...handlers,
   };
 

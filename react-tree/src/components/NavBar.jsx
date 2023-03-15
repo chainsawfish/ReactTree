@@ -1,16 +1,17 @@
-import React, {useContext} from 'react';
-import {TreeContext} from "../App.jsx";
+import React, { useContext } from "react";
+import { TreeContext } from "../App.jsx";
 
 const NavBar = () => {
-    const {selectedId, add, remove, edit, reset} = useContext(TreeContext)
-    return (
-        <div style={{display: "inline"}}>
-            <button>Add</button>
-            <button>Remove</button>
-            <button>Edit</button>
-            <button>Reset</button>
-        </div>
-    );
+  const { handleAdd, handleRemove, handleEdit, handleReset } =
+    useContext(TreeContext);
+  return (
+    <div style={{ display: "inline" }}>
+      <button onClick={handleAdd}>Add</button>
+      <button onClick={handleRemove}>Remove</button>
+      <button onClick={handleEdit}>Edit</button>
+      <button onClick={handleReset}>Reset</button>
+    </div>
+  );
 };
 
 export default NavBar;

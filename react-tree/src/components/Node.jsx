@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import { TreeContext } from "../App";
-import { nodeList } from "../data/nodeList";
 import {getParentById} from "../utils/getParentById.js";
+
+
 const Node = ({ nodes, level = 0 }) => {
-  const [isVisible, setIsVisible] = useState(false);
+    const {handleAdd, handleRemove, handleEdit, handleReset, selectedId, setSelectedId} = useContext(TreeContext)
+    const [isVisible, setIsVisible] = useState(false);
   const [nodeText, setNodeText] = useState(nodes.text);
-  const {handleAdd, handleRemove, handleEdit, handleReset, selectedId, setSelectedId} = useContext(TreeContext)
   const toggleOpen = () => {
     setIsVisible(!isVisible);
   };

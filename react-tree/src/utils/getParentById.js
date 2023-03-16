@@ -1,7 +1,5 @@
-import {nodeList} from "../data/nodeList.js";
-
-export const getParentById = (childId) => {
-    const stack = [nodeList];
+export const getParentById =  (nodes, childId) => {
+    const stack = [nodes];
     while (stack.length > 0) {
         const currentNode = stack.pop();
         if (currentNode.children) {
@@ -14,5 +12,5 @@ export const getParentById = (childId) => {
             }
         }
     }
-    return null; 
+    return null;
 }

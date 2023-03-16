@@ -42,7 +42,7 @@ function App() {
       if (!nodeId) return;
       const nodeObject = getNodeById(treeObj, nodeId);
       nodeObject.editable = true;
-      setIsEditable({ ...treeObj });
+      setIsEditable(true);
       console.log(isEditable);
     },
 

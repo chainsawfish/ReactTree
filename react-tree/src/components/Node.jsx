@@ -1,16 +1,20 @@
 import { useContext, useState } from "react";
 import { TreeContext } from "../App";
-import { nodeList } from "../data/nodeList";
+import {getParentById} from "../utils/getParentById.js";
+
+
 const Node = ({ nodes, level = 0 }) => {
-  const [isVisible, setIsVisible] = useState(false);
+    const {handleAdd, handleRemove, handleEdit, handleReset, selectedId, setSelectedId} = useContext(TreeContext)
+    const [isVisible, setIsVisible] = useState(false);
   const [nodeText, setNodeText] = useState(nodes.text);
-  const {handleAdd, handleRemove, handleEdit, handleReset} = useContext(TreeContext)
   const toggleOpen = () => {
     setIsVisible(!isVisible);
   };
 
   const selectedNode = (node) => {
     console.log("selected node", node);
+    const parentNode = getParentById(nodes?.id)
+    console.log('parent id =' ,parentNode?.id)
   };
 
   return (
@@ -18,10 +22,11 @@ const Node = ({ nodes, level = 0 }) => {
       onClick={(e) => {
         e.stopPropagation();
         selectedNode(nodes?.id);
+        setSelectedId(nodes?.id)
       }}
-      style={{ paddingLeft: 30 }}
+      style={{ paddingLeft: 50 }}
     >
-      <span onClick={toggleOpen}>{isVisible ? "- " : "+ "}</span>
+      <span style={{cursor: "pointer"}} onClick={toggleOpen}>{isVisible ? "- " : "+ "}</span>
       <span>Node {nodes?.id}</span>
       {isVisible &&
         nodes?.children?.map((childNode) => {

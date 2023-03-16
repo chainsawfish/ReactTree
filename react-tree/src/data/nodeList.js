@@ -1,4 +1,4 @@
-export const nodeList =
+export let nodeList =
     {
         id: 1,
         text: "node text",

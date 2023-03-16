@@ -41,8 +41,8 @@ function App() {
     handleEdit: (nodeId) => {
       if (!nodeId) return;
       const nodeObject = getNodeById(treeObj, nodeId);
-      setIsEditable(!isEditable);
       nodeObject.editable = true;
+      setIsEditable({ ...treeObj });
       console.log(isEditable);
     },
 
@@ -64,6 +64,8 @@ function App() {
     ...handlers,
     nodeText,
     setNodeText,
+    isEditable,
+    setIsEditable,
   };
 
   return (

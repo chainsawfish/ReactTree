@@ -4,22 +4,15 @@
 
   // These tasks can be run from CodeSandbox. Running one will open a log in the app.
   "tasks": {
+    "cd react-tree": {
+      "name": "cd react-tree",
+      "command": "cd react-tree",
+      "runAtStart": true
+    },
     "npm run dev": {
       "name": "npm run dev",
       "command": "npm run dev",
-      "runAtStart": true
-    },
-    "console.log": {
-      "name": "console.log",
-      "command": "console.log"
-    },
-    "disableLogging": {
-      "name": "disableLogging",
-      "command": "disableLogging"
-    },
-    "cd react-tree": {
-      "name": "cd react-tree",
-      "command": "cd react-tree"
+      "runAtStart": false
     }
   }
 }

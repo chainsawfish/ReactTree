@@ -34,8 +34,19 @@ const Node = ({ nodes }) => {
       </span>
       <span>
         {nodes?.id}
-        <input type="text" readOnly={!isEditable} value={nodeText} />
-        {isEditable && <button onClick={setIsEditable(false)} value="save" />}
+        <input
+          type="text"
+          onChange={(e) => setNodeText(e.target.value)}
+          readOnly={!isEditable}
+          value={nodeText}
+        />
+        {isEditable && (
+          <input
+            type="button"
+            value="save"
+            onClick={() => setIsEditable(false)}
+          />
+        )}
       </span>
       {isVisible &&
         nodes?.children?.map((childNode) => {

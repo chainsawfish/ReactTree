@@ -1,30 +1,35 @@
-export let nodeList =
-    {
-        id: 1,
-        text: "node text",
-        children: [
-            {
-                id: 3,
-                children: [
-                    {
-                    id: 6,
-                    text: "node text",
-                    children: []
-                }
-                ],
-                text: "node text"
-            },
-            {
-                id: 4,
-                text: "node text",
-                children: [
-                    {
-                        id: 5,
-                        children: [],
-                        text: "node text"
-                    }
-                ],
-            }
-        ],
-    }
+export let nodeList = {
+  id: 1,
+  text: "text",
+  editable: false,
 
+  children: [
+    {
+      id: 3,
+      children: [
+        {
+          id: 6,
+          text: "text",
+          editable: false,
+
+          children: [],
+        },
+      ],
+      text: "text",
+    },
+    {
+      id: 4,
+      text: "text",
+      editable: false,
+
+      children: [
+        {
+          id: 5,
+          children: [],
+          text: "text",
+          editable: false,
+        },
+      ],
+    },
+  ],
+};

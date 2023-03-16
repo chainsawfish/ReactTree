@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar.jsx";
 import "./App.css";
 import {getParentById} from "./utils/getParentById.js";
 import {getNewItemId} from "./utils/getNewItemId.js";
+import getNodeById from "./utils/getNodeById.js";
 
 export const TreeContext = createContext(null);
 
@@ -20,8 +21,8 @@ function App() {
         text: "simple text",
         children: [],
       };
-      const parent = getParentById(treeObj, nodeId)
-      parent?.children?.push(newNode)
+      const nodeObject = getNodeById(treeObj, nodeId)
+      nodeObject?.children?.push(newNode)
       setTreeObj({...treeObj})
     },
 

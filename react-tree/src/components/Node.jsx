@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { TreeContext } from "../App";
 import { getParentById } from "../utils/getParentById.js";
 
-const Node = ({ nodes, level = 0 }) => {
+const Node = ({ nodes }) => {
   const {
     handleAdd,
     handleRemove,
@@ -36,13 +36,16 @@ const Node = ({ nodes, level = 0 }) => {
         {isVisible ? "- " : "+ "}
       </span>
       <span>
-        {nodes?.id} : {nodes?.text}
+        {nodes?.id} :{" "}
+        <input
+          type="text"
+          readOnly={!nodes?.editable}
+          defaultValue={nodes?.text}
+        />
       </span>
       {isVisible &&
         nodes?.children?.map((childNode) => {
-          return (
-            <Node key={childNode.id} nodes={childNode} level={level + 1} />
-          );
+          return <Node key={childNode.id} nodes={childNode} />;
         })}
     </div>
   );

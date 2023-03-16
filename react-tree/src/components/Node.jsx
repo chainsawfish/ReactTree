@@ -39,7 +39,6 @@ const Node = ({ nodes }) => {
           type="text"
           onChange={(e) => {
             e.stopPropagation();
-            if (nodes?.id !== selectedId) return;
             setNodeText(e.target.value);
           }}
           readOnly={!isEditable}

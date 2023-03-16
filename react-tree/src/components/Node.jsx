@@ -2,32 +2,26 @@ import { useContext, useState } from "react";
 import { TreeContext } from "../App";
 import { getParentById } from "../utils/getParentById.js";
 
-const Node = ({ nodes }) => {
+const Node = ({ nodes, isEditable=false }) => {
   const {
     handleAdd,
     handleRemove,
     handleEdit,
     handleReset,
     selectedId,
-    setSelectedId,
+    setSelectedId, nodeText, setNodeText
   } = useContext(TreeContext);
   const [isVisible, setIsVisible] = useState(false);
-  const [nodeText, setNodeText] = useState(nodes.text);
   const toggleOpen = () => {
     setIsVisible(!isVisible);
   };
 
-  const selectedNode = (node) => {
-    console.log("selected node", node);
-    const parentNode = getParentById(nodes?.id);
-    console.log("parent id =", parentNode?.id);
-  };
 
   return (
     <div
       onClick={(e) => {
         e.stopPropagation();
-        selectedNode(nodes?.id);
+        console.log("selected node", nodes?.id);
         setSelectedId(nodes?.id);
       }}
       style={{ paddingLeft: 50 }}
@@ -40,12 +34,12 @@ const Node = ({ nodes }) => {
         <input
           type="text"
           readOnly={!nodes?.editable}
-          defaultValue={nodes?.text}
+          value={nodeText}
         />
       </span>
       {isVisible &&
         nodes?.children?.map((childNode) => {
-          return <Node key={childNode.id} nodes={childNode} />;
+          return <Node key={childNode.id} nodes={childNode} isEditable={isEditable} />;
         })}
     </div>
   );

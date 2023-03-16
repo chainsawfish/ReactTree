@@ -11,6 +11,7 @@ import getNodeById from "./utils/getNodeById.js";
 export const TreeContext = createContext(null);
 
 function App() {
+  const [nodeText, setNodeText] = useState('text');
   const [selectedId, setSelectedId] = useState(0);
   const [treeObj, setTreeObj] = useState({ ...nodeList });
 
@@ -35,14 +36,16 @@ function App() {
       parent.children = parent.children.filter((child) => child.id !== nodeId);
       setTreeObj({ ...treeObj });
     },
-    handleEdit: (nodeId) => {},
+    handleEdit: (nodeId, text) => {
+      setNodeText(text)
+    },
     handleReset: () => {},
   };
 
   const contextValue = {
     selectedId,
     setSelectedId,
-    ...handlers,
+    ...handlers, nodeText, setNodeText
   };
 
   return (

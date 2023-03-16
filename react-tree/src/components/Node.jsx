@@ -30,7 +30,7 @@ const Node = ({ nodes }) => {
       style={{ paddingLeft: 50 }}
     >
       <span style={{ cursor: "pointer" }} onClick={toggleOpen}>
-        {isVisible ? "- " : "+ "}
+        {isVisible ? "[-] " : "[+] "}
       </span>
       <span>
         {nodes?.id}

@@ -36,7 +36,10 @@ const Node = ({ nodes }) => {
         {nodes?.id}
         <input
           type="text"
-          onChange={(e) => setNodeText(e.target.value)}
+          onChange={(e) => {
+            e.stopPropagation();
+            setNodeText(e.target.value);
+          }}
           readOnly={!isEditable}
           value={nodeText}
         />

@@ -26,7 +26,15 @@ function App() {
       setTreeObj({...treeObj})
     },
 
-    handleRemove: () => {},
+    handleRemove: (nodeId) => {
+      const parent = getParentById(treeObj, nodeId);
+      if (!parent) {
+        return;
+      }
+      parent.children = parent.children.filter((child) => child.id !== nodeId);
+      setTreeObj({ ...treeObj });
+
+    },
     handleEdit: () => {},
     handleReset: () => {},
   };

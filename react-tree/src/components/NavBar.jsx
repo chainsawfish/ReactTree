@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { TreeContext } from "../App.jsx";
 
 const NavBar = () => {
-  const [btnEdit, setBtnEdit] = useState(true);
   const { handleAdd, handleRemove, handleEdit, handleReset, selectedId } =
     useContext(TreeContext);
   return (
@@ -11,13 +10,18 @@ const NavBar = () => {
       <button onClick={() => handleRemove(selectedId)}>remove</button>
       <button
         onClick={() => {
-          setBtnEdit(!btnEdit);
           handleEdit(selectedId);
         }}
       >
-        {btnEdit ? "edit" : "save"}
+        edit
       </button>
-      <button onClick={handleReset}>reset</button>
+      <button
+        onClick={() => {
+          handleReset();
+        }}
+      >
+        reset
+      </button>
     </div>
   );
 };

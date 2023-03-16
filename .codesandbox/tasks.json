@@ -16,6 +16,10 @@
     "disableLogging": {
       "name": "disableLogging",
       "command": "disableLogging"
+    },
+    "cd react-tree": {
+      "name": "cd react-tree",
+      "command": "cd react-tree"
     }
   }
 }

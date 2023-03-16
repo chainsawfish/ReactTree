@@ -2,20 +2,23 @@ import { useContext, useState } from "react";
 import { TreeContext } from "../App";
 import { getParentById } from "../utils/getParentById.js";
 
-const Node = ({ nodes, isEditable=false }) => {
+const Node = ({ nodes }) => {
   const {
     handleAdd,
     handleRemove,
     handleEdit,
     handleReset,
     selectedId,
-    setSelectedId, nodeText, setNodeText
+    setSelectedId,
+    nodeText,
+    setNodeText,
+    isEditable,
+    setIsEditable,
   } = useContext(TreeContext);
   const [isVisible, setIsVisible] = useState(false);
   const toggleOpen = () => {
     setIsVisible(!isVisible);
   };
-
 
   return (
     <div
@@ -30,16 +33,19 @@ const Node = ({ nodes, isEditable=false }) => {
         {isVisible ? "- " : "+ "}
       </span>
       <span>
-        {nodes?.id} :{" "}
-        <input
-          type="text"
-          readOnly={!nodes?.editable}
-          value={nodeText}
-        />
+        {nodes?.id}
+        <input type="text" readOnly={!isEditable} value={nodeText} />
+        {isEditable && <button onClick={setIsEditable(false)} value="save" />}
       </span>
       {isVisible &&
         nodes?.children?.map((childNode) => {
-          return <Node key={childNode.id} nodes={childNode} isEditable={isEditable} />;
+          return (
+            <Node
+              key={childNode.id}
+              nodes={childNode}
+              isEditable={isEditable}
+            />
+          );
         })}
     </div>
   );

@@ -2,7 +2,6 @@ export let nodeList = {
   id: 1,
   text: "text",
   editable: false,
-
   children: [
     {
       id: 3,
@@ -11,7 +10,6 @@ export let nodeList = {
           id: 6,
           text: "text",
           editable: false,
-
           children: [],
         },
       ],
@@ -21,7 +19,6 @@ export let nodeList = {
       id: 4,
       text: "text",
       editable: false,
-
       children: [
         {
           id: 5,

@@ -8,6 +8,10 @@
 
 }
 
+.node {
+    background-color: darkseagreen;
+}
+
 button {
     height: 40px;
     border-style: dashed;

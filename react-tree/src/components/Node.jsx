@@ -29,12 +29,13 @@ const Node = ({ nodes }) => {
       }}
       style={{ paddingLeft: 50 }}
     >
-      <span style={{ cursor: "pointer" }} onClick={toggleOpen}>
-        {isVisible ? "[-] " : "[+] "}
+      <span style={{ cursor: "pointer", color:"firebrick"}} onClick={toggleOpen}>
+        {isVisible ? "V " : "> "}
       </span>
       <span>
-        {nodes?.id}
+        id{nodes?.id}
         <input
+            style={{border:"1px solid grey", borderRadius:"10px", margin:'4px', padding:'4px', height: '24px', fontSize: '1.2rem'}}
           type="text"
           onChange={(e) => {
             e.stopPropagation();
@@ -46,6 +47,7 @@ const Node = ({ nodes }) => {
         />
         {isEditable && (
           <input
+              style={{border:"0px", borderRadius:"20px", margin:'4px', height: '24px'}}
             type="button"
             value="save"
             onClick={() => setIsEditable(false)}
